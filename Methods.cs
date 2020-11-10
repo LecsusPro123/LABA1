@@ -9,29 +9,73 @@ namespace Практика
         public static void AddNew()
         {
             ClearScr();
-            List<string> Info = new List<string>();
+            string[] Info = new string[9];
             //=============================================
             Console.WriteLine("*-обязательные поля");
-            Console.Write("Фамилия*: ");
-            Info.Add(Console.ReadLine());
-            Console.Write("Имя*: ");
-            Info.Add(Console.ReadLine());
+            while (true)
+            {
+                Console.Write("Фамилия*: ");
+                Info[0] = (Console.ReadLine());
+                if (Info[0] == "")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (true)
+            {
+                Console.Write("Имя*: ");
+                Info[1] = (Console.ReadLine());
+                if (Info[1] == "")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
             Console.Write("Отчество: ");
-            Info.Add(Console.ReadLine());
-            Console.Write("Номер телефона*: ");
-            Info.Add(Console.ReadLine());
-            Console.Write("Страна*: ");
-            Info.Add(Console.ReadLine());
+            Info[2] = (Console.ReadLine());
+            while (true)
+            {
+                Console.Write("Номер телефона*: ");
+                Info[3] = (Console.ReadLine());
+                if (Info[3] == "")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            while (true)
+            {
+                Console.Write("Страна*: ");
+                Info[4] = (Console.ReadLine());
+                if (Info[4] == "")
+                {
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
             Console.Write("Дата рождения: ");
-            Info.Add(Console.ReadLine());
+            Info[5] = (Console.ReadLine());
             Console.Write("Организация: ");
-            Info.Add(Console.ReadLine());
+            Info[6] = (Console.ReadLine());
             Console.Write("Должность: ");
-            Info.Add(Console.ReadLine());
+            Info[7] = (Console.ReadLine());
             Console.Write("Прочие заметки: ");
-            Info.Add(Console.ReadLine());
+            Info[8] = (Console.ReadLine());
             //=============================================
-            Program.Notebook.Add(new Person(Info));
+            Program.Notebook.Add(new Person(ref Info));
             ClearScr();
         }
         public static void Delete()

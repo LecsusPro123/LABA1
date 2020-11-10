@@ -30,7 +30,7 @@ namespace Практика
             }
         }
 
-        public Person(List<string> Info)
+        public Person(ref string[] Info)
         {
             this.SecondName = Info[0];
             this.Name = Info[1];
