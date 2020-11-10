@@ -86,9 +86,10 @@ namespace Практика
             while (true) 
             {
                 string PersonName = Console.ReadLine();
+                if (PersonName == "Exit") break;
                 Console.WriteLine();
                 string[] Person = PersonName.Split(' ');
-                List<Person> result = Program.Notebook.FindAll(item => item.SecondName == Person[0] && item.Name == Person[1]);
+                List<Person> result = Program.Notebook.FindAll(item => ((item.SecondName == Person[0] && item.Name == Person[1]) || (item.SecondName == Person[1] && item.Name == Person[0])));
 
                 if (result.Count == 1)
                 {
@@ -98,7 +99,7 @@ namespace Практика
 
                 if (result.Count == 0)
                 {
-                    Console.WriteLine("Такой контакт не найден, попробуйте еще раз...");
+                    Console.Write("Такой контакт не найден, попробуйте еще раз или напишите \"Exit\": ");
                 }
                 if (result.Count > 1)
                 {
@@ -122,19 +123,19 @@ namespace Практика
             ClearScr();
             Console.Write("Введите Фамилию и Имя человека, которого хотите изменить: ");
             int index = 0, index_line = 0;
-            List<Person> result;
-            
+            List<Person> result = null;
             //Нахождение нужного
             while (true)
             {
                 string PersonName = Console.ReadLine();
+                if (PersonName == "Exit") break;
                 Console.WriteLine();
                 string[] Person = PersonName.Split(' ');
-                result = Program.Notebook.FindAll(item => item.SecondName == Person[0] && item.Name == Person[1]);
+                result = Program.Notebook.FindAll(item => ((item.SecondName == Person[0] && item.Name == Person[1]) || (item.SecondName == Person[1] && item.Name == Person[0])));
 
                 if (result.Count == 0)
                 {
-                    Console.WriteLine("Такой контакт не найден, попробуйте еще раз...");
+                    Console.Write("Такой контакт не найден, попробуйте еще раз или напишите \"Exit\": ");
                 }
                 if (result.Count == 1)
                 {
@@ -261,13 +262,14 @@ namespace Практика
             while (true)
             {
                 string PersonName = Console.ReadLine();
+                if (PersonName == "Exit") break;
                 Console.WriteLine();
                 string[] Person = PersonName.Split(' ');
-                List<Person> result = Program.Notebook.FindAll(item => item.SecondName == Person[0] && item.Name == Person[1]);
+                List<Person> result = Program.Notebook.FindAll(item => ((item.SecondName == Person[0] && item.Name == Person[1]) || (item.SecondName == Person[1] && item.Name == Person[0])));
 
                 if (result.Count == 0)
                 {
-                    Console.WriteLine("Такой контакт не найден, попробуйте еще раз...");
+                    Console.Write("Такой контакт не найден, попробуйте еще раз или напишите \"Exit\": ");
                 }
                 if (result.Count == 1)
                 {
@@ -297,6 +299,8 @@ namespace Практика
         public static void ShowAll()
         {
             ClearScr();
+            if (Program.Notebook.Count == 0) Console.WriteLine("Список пуст...\n");
+
             for (int i = 0; i < Program.Notebook.Count; i++)
             {
                 Console.WriteLine($"____________/{i + 1}/____________\n" +
